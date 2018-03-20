@@ -28,7 +28,7 @@
                 Padding="5" 
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Content="SelectDirectory"
+                Content="Select Directory"
                 Click="select_Click" Margin=" 5">
 
         </Button>
