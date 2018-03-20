@@ -35,21 +35,21 @@ namespace DynamoXMLToJsonMigrator
                 var ext = System.IO.Path.GetExtension(file);
                 if (ext == ".dyn" || ext == ".dyf")
                 {
-                    if (System.IO.Path.GetFileName(file).Contains("jsonMigrated"))
+                    if (System.IO.Path.GetFileName(file).Contains("_jsonMigrated"))
                     {
                        migrationExtension.Output =
                        migrationExtension.Output + Environment.NewLine +
-                       string.Format("⚪ attempted to migrate{0}, but it appears it was already migrated (contained jsonMigrated in its filename).", file);
+                       string.Format("⚪ Attempted to migrate {0}, but it appears it was already migrated (contained _jsonMigrated in its filename).", file);
                         continue;
                     }
-                    var newfilepath = System.IO.Path.ChangeExtension(file, null) + "jsonMigrated" + ext;
+                    var newfilepath = System.IO.Path.ChangeExtension(file, null) + "_jsonMigrated" + ext;
                     dynamoViewModel.OpenCommand.Execute(file);
                     dynamoViewModel.SaveAsCommand.Execute(newfilepath);
 
                     //append some text to the output string.
                     migrationExtension.Output =
                         migrationExtension.Output + Environment.NewLine +
-                        string.Format("⚪ attempted to migrate{0} to json and save at {1}", file, newfilepath);
+                        string.Format("⚪ Attempted to migrate {0} to JSON and save at {1}", file, newfilepath);
                 }
             }
         }

@@ -21,9 +21,9 @@ namespace DynamoXMLToJsonMigrator
             get
             {
                 return
-                "This extension will automate the process of converting xml dynamo files to json based 2.0 files."+
-                "Select A directory which contains dynamo files and press migrate."+
-                "Files will have jsonMigrated appended to their names and will be saved into the same directory.";
+                "This extension will automate the process of converting XML Dynamo files to JSON based 2.0 files.\n"+
+                "Select a directory which contains Dynamo files and press Migrate.\n"+
+                "Files will have _jsonMigrated appended to their names and will be saved into the same directory.";
             }
         }
 
@@ -35,7 +35,7 @@ namespace DynamoXMLToJsonMigrator
             }
         }
 
-        private string selectedDirectory = "no Directory Selected";
+        private string selectedDirectory = "No directory selected";
         /// <summary>
         /// The selected directory of dynamo files to be migrated.
         /// </summary>
