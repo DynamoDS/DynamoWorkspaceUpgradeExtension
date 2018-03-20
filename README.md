@@ -13,7 +13,7 @@ A dynamo view extension which automates converting workspaces to dynamo 2.0 form
 
 ## install:
 
-Copy `bin/Debug/DynamoXMLtoJsonMigrator.dll` to your `<dynamo install directory>` alonside the other core dlls.
+Copy `bin/Debug/DynamoXMLtoJsonMigrator.dll` to your `<dynamo install directory>` alongside the other core dlls.
 Copy `src/migration_ViewExtensionDefinition.xml` to your `<dynamo install directory>/ViewExtensions/`
 
 ## using it:
