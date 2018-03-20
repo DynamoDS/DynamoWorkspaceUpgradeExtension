@@ -22,7 +22,7 @@ namespace DynamoXMLToJsonMigrator
             {
                 return
                 "This extension will automate the process of converting XML Dynamo files to JSON based 2.0 files.\n"+
-                "Select a directory which contains Dynamo files and press migrate.\n"+
+                "Select a directory which contains Dynamo files and press Migrate.\n"+
                 "Files will have _jsonMigrated appended to their names and will be saved into the same directory.";
             }
         }
