@@ -22,8 +22,9 @@ namespace DynamoXMLToJsonMigrator
             {
                 return
                 "This extension will automate the process of converting XML Dynamo files to JSON based 2.0 files.\n"+
-                "Select a directory which contains Dynamo files and press Migrate.\n"+
-                "Files will have _jsonMigrated appended to their names and will be saved into the same directory.";
+                "Select a source directory which contains Dynamo files and press Migrate.\n"+
+                "Optionally, you can also specify a target directory.\n"+
+                "Files will be saved to the target directory, or if none is given the source files will be overwritten in the source directory.";
             }
         }
 
@@ -35,20 +36,45 @@ namespace DynamoXMLToJsonMigrator
             }
         }
 
-        private string selectedDirectory = "No directory selected";
+        private string selectedSourceDirectory = "No directory selected";
         /// <summary>
-        /// The selected directory of dynamo files to be migrated.
+        /// The selected source directory of dynamo files to be migrated.
         /// </summary>
-        public string SelectedDirectory
+        public string SelectedSourceDirectory
         {
             get
             {
-                return this.selectedDirectory;
+                return this.selectedSourceDirectory;
             }
             set
             {
-                selectedDirectory = value;
-                RaisePropertyChanged(nameof(SelectedDirectory));
+                selectedSourceDirectory = value;
+                RaisePropertyChanged(nameof(SelectedSourceDirectory));
+            }
+        }
+
+        public string selectedTargetDirectoryDefault
+        {
+            get
+            {
+                return "Optional";
+            }
+        }
+
+        private string selectedTargetDirectory = "Optional";
+        /// <summary>
+        /// The selected target directory of dynamo files to be migrated.
+        /// </summary>
+        public string SelectedTargetDirectory
+        {
+            get
+            {
+                return this.selectedTargetDirectory;
+            }
+            set
+            {
+                selectedTargetDirectory = value;
+                RaisePropertyChanged(nameof(SelectedTargetDirectory));
             }
         }
 
