@@ -57,11 +57,11 @@ namespace DynamoXMLToJsonMigrator
         {
             get
             {
-                return "Optional";
+                return "No target directory selected, files will be overwritten in source directory.";
             }
         }
 
-        private string selectedTargetDirectory = "Optional";
+        private string selectedTargetDirectory = "No target directory selected, files will be overwritten in source directory.";
         /// <summary>
         /// The selected target directory of dynamo files to be migrated.
         /// </summary>

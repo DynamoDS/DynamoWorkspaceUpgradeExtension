@@ -20,21 +20,21 @@ namespace DynamoXMLToJsonMigrator
         private void migrate_Click(object sender, RoutedEventArgs e)
         {
             var migrationExtension = (this.DataContext as DynamoMigratorExtension);
-            var sourcepath = migrationExtension.SelectedSourceDirectory;
-            var targetpath = sourcepath;
-            var replacedir = false;
-            if (!Directory.Exists(sourcepath))
+            var sourcePath = migrationExtension.SelectedSourceDirectory;
+            var targetPath = sourcePath;
+            var targetDirectoryIsSet = false;
+            if (!Directory.Exists(sourcePath))
             {
-                (this.DataContext as DynamoMigratorExtension).Output = String.Format("Could not access directory at: {0}.", sourcepath);
+                (this.DataContext as DynamoMigratorExtension).Output = String.Format("Could not access directory at: {0}.", sourcePath);
                 return;
             }
             else if (migrationExtension.SelectedTargetDirectory != migrationExtension.selectedTargetDirectoryDefault)
             {
-                targetpath = migrationExtension.SelectedTargetDirectory;
-                replacedir = true;
+                targetPath = migrationExtension.SelectedTargetDirectory;
+                targetDirectoryIsSet = true;
             }
             var dynamoViewModel = (this.Owner.DataContext as DynamoViewModel);
-            var files = System.IO.Directory.EnumerateFiles(sourcepath);
+            var files = System.IO.Directory.EnumerateFiles(sourcePath);
             //clear the output before this migration run.
             migrationExtension.Output = "";
             foreach (var file in files)
@@ -43,9 +43,9 @@ namespace DynamoXMLToJsonMigrator
                 if (ext == ".dyn" || ext == ".dyf")
                 {
                     var newfilepath = file;
-                    if (replacedir)
+                    if (targetDirectoryIsSet)
                     {
-                        newfilepath = file.Replace(sourcepath, targetpath);
+                        newfilepath = file.Replace(sourcePath, targetPath);
                     }
                     dynamoViewModel.OpenCommand.Execute(file);
                     dynamoViewModel.SaveAsCommand.Execute(newfilepath);
