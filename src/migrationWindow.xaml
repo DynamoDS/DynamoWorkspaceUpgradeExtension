@@ -7,12 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Title="DynamoMigrationExtension">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-    <StackPanel Name="MainPanel"  
+        <StackPanel Name="MainPanel"  
                 Background="#2d2d2d"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch">
 
-        <TextBlock Name="info"
+            <TextBlock Name="info"
                    HorizontalAlignment="Stretch"
                    VerticalAlignment="Stretch"
                    MinWidth="200"
@@ -24,35 +24,52 @@
                    TextWrapping="Wrap"
                    Foreground="White"/>
 
-        <Button Name="select"
+            <Button Name="selectSource"
                 Padding="5" 
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Content="Select Directory"
-                Click="select_Click" Margin=" 5">
+                Content="Select Source Directory"
+                Click="selectSource_Click" Margin=" 5">
 
-        </Button>
-        <TextBlock 
+            </Button>
+            <TextBlock 
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"
                    MinWidth="200"
-                   Text="{Binding SelectedDirectory}"
+                   Text="{Binding SelectedSourceDirectory}"
                    FontFamily="Arial" 
                    Padding="10" 
                    FontWeight="Light" 
                    FontSize="12"
                    Margin="5"
                    Foreground="White"/>
-        <Button Name="migrate"
+            <Button x:Name="selectTarget"
+                Padding="5" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="Select Target Directory"
+                Click="selectTarget_Click" Margin=" 5"/>
+            <TextBlock 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                MinWidth="200"
+                Text="{Binding SelectedTargetDirectory}"
+                FontFamily="Arial" 
+                Padding="10" 
+                FontWeight="Light" 
+                FontSize="12"
+                Margin="5"
+                Foreground="White"/>
+            <Button Name="migrate"
                 Padding="5" 
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top" 
                 Content="Migrate" 
                 Click="migrate_Click"
                 Margin="5">
-               
-        </Button>
-        <TextBlock Name="output"
+
+            </Button>
+            <TextBlock x:Name="output"
                    HorizontalAlignment="Stretch"
                    VerticalAlignment="Stretch"
                    MinWidth="200"
@@ -63,7 +80,7 @@
                    FontSize="12"
                    TextWrapping="Wrap"
                    Foreground="White"/>
-    </StackPanel>
+        </StackPanel>
     </ScrollViewer>
 
 </Window>

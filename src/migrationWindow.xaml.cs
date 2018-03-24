@@ -20,14 +20,21 @@ namespace DynamoXMLToJsonMigrator
         private void migrate_Click(object sender, RoutedEventArgs e)
         {
             var migrationExtension = (this.DataContext as DynamoMigratorExtension);
-            var path = migrationExtension.SelectedDirectory;
-            if (!Directory.Exists(path))
+            var sourcePath = migrationExtension.SelectedSourceDirectory;
+            var targetPath = sourcePath;
+            var targetDirectoryIsSet = false;
+            if (!Directory.Exists(sourcePath))
             {
-                (this.DataContext as DynamoMigratorExtension).Output = String.Format("Could not access directory at: {0}.", path);
+                (this.DataContext as DynamoMigratorExtension).Output = String.Format("Could not access directory at: {0}.", sourcePath);
                 return;
             }
+            else if (migrationExtension.SelectedTargetDirectory != DynamoMigratorExtension.selectedTargetDirectoryDefault)
+            {
+                targetPath = migrationExtension.SelectedTargetDirectory;
+                targetDirectoryIsSet = true;
+            }
             var dynamoViewModel = (this.Owner.DataContext as DynamoViewModel);
-            var files = System.IO.Directory.EnumerateFiles(path);
+            var files = System.IO.Directory.EnumerateFiles(sourcePath);
             //clear the output before this migration run.
             migrationExtension.Output = "";
             foreach (var file in files)
@@ -35,14 +42,11 @@ namespace DynamoXMLToJsonMigrator
                 var ext = System.IO.Path.GetExtension(file);
                 if (ext == ".dyn" || ext == ".dyf")
                 {
-                    if (System.IO.Path.GetFileName(file).Contains("_jsonMigrated"))
+                    var newfilepath = file;
+                    if (targetDirectoryIsSet)
                     {
-                       migrationExtension.Output =
-                       migrationExtension.Output + Environment.NewLine +
-                       string.Format("⚪ Attempted to migrate {0}, but it appears it was already migrated (contained _jsonMigrated in its filename).", file);
-                        continue;
+                        newfilepath = file.Replace(sourcePath, targetPath);
                     }
-                    var newfilepath = System.IO.Path.ChangeExtension(file, null) + "_jsonMigrated" + ext;
                     dynamoViewModel.OpenCommand.Execute(file);
                     dynamoViewModel.SaveAsCommand.Execute(newfilepath);
 
@@ -54,7 +58,7 @@ namespace DynamoXMLToJsonMigrator
             }
         }
 
-        private void select_Click(object sender, RoutedEventArgs e)
+        private void selectSource_Click(object sender, RoutedEventArgs e)
         {
             var openDialog = new FolderBrowserDialog
             {
@@ -63,7 +67,21 @@ namespace DynamoXMLToJsonMigrator
 
             if (openDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                (this.DataContext as DynamoMigratorExtension).SelectedDirectory = openDialog.SelectedPath;
+                (this.DataContext as DynamoMigratorExtension).SelectedSourceDirectory = openDialog.SelectedPath;
+            }
+        }
+
+
+        private void selectTarget_Click(object sender, RoutedEventArgs e)
+        {
+            var openDialog = new FolderBrowserDialog
+            {
+                ShowNewFolderButton = true
+            };
+
+            if (openDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                (this.DataContext as DynamoMigratorExtension).SelectedTargetDirectory = openDialog.SelectedPath;
             }
         }
     }
