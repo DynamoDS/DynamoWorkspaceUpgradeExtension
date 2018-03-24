@@ -28,7 +28,7 @@ namespace DynamoXMLToJsonMigrator
                 (this.DataContext as DynamoMigratorExtension).Output = String.Format("Could not access directory at: {0}.", sourcePath);
                 return;
             }
-            else if (migrationExtension.SelectedTargetDirectory != migrationExtension.selectedTargetDirectoryDefault)
+            else if (migrationExtension.SelectedTargetDirectory != DynamoMigratorExtension.selectedTargetDirectoryDefault)
             {
                 targetPath = migrationExtension.SelectedTargetDirectory;
                 targetDirectoryIsSet = true;

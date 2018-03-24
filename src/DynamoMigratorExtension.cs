@@ -36,7 +36,7 @@ namespace DynamoXMLToJsonMigrator
             }
         }
 
-        private string selectedSourceDirectory = "No directory selected";
+        private string selectedSourceDirectory = "No source directory selected";
         /// <summary>
         /// The selected source directory of dynamo files to be migrated.
         /// </summary>
@@ -53,15 +53,9 @@ namespace DynamoXMLToJsonMigrator
             }
         }
 
-        public string selectedTargetDirectoryDefault
-        {
-            get
-            {
-                return "No target directory selected, files will be overwritten in source directory.";
-            }
-        }
+        public const string selectedTargetDirectoryDefault = "No target directory selected, files will be overwritten in source directory.";
 
-        private string selectedTargetDirectory = "No target directory selected, files will be overwritten in source directory.";
+        private string selectedTargetDirectory = selectedTargetDirectoryDefault;
         /// <summary>
         /// The selected target directory of dynamo files to be migrated.
         /// </summary>
