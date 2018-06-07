@@ -1,5 +1,6 @@
-# Dynamo Workspace Upgrade Extension
+# [WIP] Dynamo Workspace Upgrade Extension
 A dynamo view extension which automates converting workspaces to dynamo 2.0 format.
+Use at your own risk at this time.
 
 ![image](https://github.com/mjkkirschner/DynamoWorkspaceUpgradeExtension/blob/master/images/extensionImage.png)
 
