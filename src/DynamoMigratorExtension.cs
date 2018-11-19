@@ -25,7 +25,7 @@ namespace DynamoXMLToJsonMigrator
                 "Select a source directory which contains Dynamo files and press Migrate.\n"+
                 "Optionally, you can also specify a target directory.\n"+
                 "Files will be saved to the target directory, or if none is given the source files will be overwritten in the source directory.\n"+
-                "Note: For clockwork package, it is recommended to migrate the files in batch's of 75-100 due to large number of nodes in there.";
+                "Note: For clockwork package, it is recommended to migrate the files in batch's of 50-100 at once. Close the dynamo window and open it again before running the next batch of files.";
             }
         }
 
