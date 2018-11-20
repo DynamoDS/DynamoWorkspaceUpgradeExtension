@@ -24,7 +24,8 @@ namespace DynamoXMLToJsonMigrator
                 "This extension will automate the process of converting XML Dynamo files to JSON based 2.0 files.\n"+
                 "Select a source directory which contains Dynamo files and press Migrate.\n"+
                 "Optionally, you can also specify a target directory.\n"+
-                "Files will be saved to the target directory, or if none is given the source files will be overwritten in the source directory.";
+                "Files will be saved to the target directory, or if none is given the source files will be overwritten in the source directory.\n"+
+                "Note: For larger packages, it is recommended to migrate the files in batch's of 50-100 at once. Close the dynamo window and open it again before running the next batch of files.";
             }
         }
 
